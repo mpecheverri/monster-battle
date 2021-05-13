@@ -78,13 +78,17 @@
     </p>
     <script src="utils.js"></script>
     <script>
+      //setup
       const bar = document.getElementById("bar");
+
+      //state
       const health = {
         initial: 69,
         current: 69,
         bar: "green",
       };
 
+      //turn
       const { newHealth, newPercentage } = calculateStatus(
         health.initial,
         health.current,
@@ -94,9 +98,11 @@
       const newBarColor = calculateBarColor(newPercentage);
       const previousBarColor = health.bar;
 
+      //update state
       health.current = newHealth;
       health.bar = newBarColor;
 
+      //update UI
       bar.setAttribute("style", `width: ${newPercentage}%`);
       bar.classList.remove(previousBarColor);
       bar.classList.add(newBarColor);
