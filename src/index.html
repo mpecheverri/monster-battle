@@ -108,7 +108,7 @@
         bar.setAttribute("style", `width: ${newPercentage}%`);
         bar.classList.remove(previousBarColor);
         bar.classList.add(newBarColor);
-        healthchange.innerHTML=`${newHealth}/${health.initial}`
+        healthchange.textContent=`${newHealth}/${health.initial}`
       }, 0);
     </script>
   </body>
