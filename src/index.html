@@ -76,36 +76,31 @@
       This is not an official pokemon game, this is only for educational
       proposes
     </p>
+    <script src="utils.js"></script>
     <script>
+      //selecciono elemento por el ID (yo hice el ID, no estaba en el documento original)
       const bar=document.getElementById("bar");
 
-      function getRandomNumber(max = 1, min = 1) {
-        return min + Math.floor(Math.random() * 20);
-      }
-      
-      function calculateStatus(inital, current, count) {
-        const newHealth= Math.max(0, current -count)
-        const newPercentage= Math.ceil((newHealth / initial) * 100);
-        return {
-          newHealth,
-          newPercentage
-        }
-      }
-
+      //hasta aquí solo he declarado y no ha pasado nada
+      //crea el status inicial
       const health= {
         initial: 69,
         current: 69,
-
-      }
-
-      const { newHealth, newPercentage }= healthcalculateStatus(
+        color: "green",
+      };
+      
+      //da valores a nueva salud y porcentaje de barra llamando funcion de arriba
+      const { newHealth, newPercentage }= calculateStatus(
         health.initial,
         health.current,
-        getRandomNumber(10));
-      
-      health.current=newHealth
+        getRandomNumber(50)
+        );
 
-      bar.style.width=`${newPercentage}%`
+      const newBarColor= calculateBarColor(newPercentage);
+      //cambio el current para reflejar el golpe y cambio el width de la barra con el nuevo porcent.
+      health.current=newHealth;
+      bar.style.width=`${newPercentage}%`;
+      bar.setAttribute("class", `bar ${newBarColor}`);
     </script>
   </body>
 </html>
